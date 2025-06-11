@@ -87,7 +87,7 @@
       cursor: pointer;
     }
 
-    .product-description-container {
+ .product-description-container {
   background-color: #fff8f3;
   border: 2px solid #DDC9AF;
   border-radius: 10px;
@@ -95,11 +95,10 @@
   font-size: 0.95rem;
   line-height: 1.5;
   max-width: 600px;
-
-  height: 400px;            /* <-- altura igual à imagem principal */
-  box-sizing: border-box;   /* garante que o padding esteja incluso na altura */
+  min-height: 400px;  /* garante altura mínima, mas permite crescer conforme o conteúdo */
+  box-sizing: border-box; /* padding incluso na altura */
+  flex: 1; /* ajuda a manter proporção ao lado da imagem em telas maiores */
 }
-
 
     .product-description-container h3 {
       color: #8C7252;
@@ -142,7 +141,14 @@
       margin: 0 10px;
       white-space: nowrap;
     }
-
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  text-align: center;
+}
     @media (max-width: 900px) {
       .product-main {
         flex-direction: column;
@@ -293,7 +299,8 @@
 <body>
 
 <header>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+  <div class="header-flex">
+
     <h1 style="margin: 0; font-size: 4.5rem;">
       Retr<span style="font-family: 'Playfair Display', serif;">ô</span>
     </h1>
