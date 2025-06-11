@@ -56,10 +56,13 @@
       align-items: flex-start;
     }
 
-   .miniatures-column {
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* valor fixo pequeno para deixar bem próximas */
+   
+  .miniatures-column {
+  display: grid;
+  grid-template-rows: repeat(4, auto); /* 4 linhas no máximo */
+  grid-auto-flow: column;              /* preenche colunas verticalmente */
+  gap: 8px;
+  max-height: 612px;                   /* altura da imagem principal */
 }
 
 
@@ -95,9 +98,9 @@
   font-size: 0.95rem;
   line-height: 1.5;
   max-width: 600px;
-
-  height: 400px;            /* <-- altura igual à imagem principal */
-  box-sizing: border-box;   /* garante que o padding esteja incluso na altura */
+  min-height: 400px;  /* garante altura mínima, mas permite crescer conforme o conteúdo */
+  box-sizing: border-box; /* padding incluso na altura */
+  flex: 1; /* ajuda a manter proporção ao lado da imagem em telas maiores */
 }
 
 
@@ -142,7 +145,14 @@
       margin: 0 10px;
       white-space: nowrap;
     }
-
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  text-align: center;
+}
     @media (max-width: 900px) {
       .product-main {
         flex-direction: column;
@@ -293,7 +303,8 @@
 <body>
 
 <header>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+  <div class="header-flex">
+
     <h1 style="margin: 0; font-size: 4.5rem;">
       Retr<span style="font-family: 'Playfair Display', serif;">ô</span>
     </h1>
