@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RG Retrô Geladeira</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffffff;
+      color: #2e2d2d;
+    }
+
+    header {
+      background-color: #E07320;
+      color: rgb(48, 44, 44);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'RetroBeach', serif;
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .product-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #3a2d1c;
+      margin-bottom: 40px;
+    }
+
+    .product-main {
+      display: flex;
+      gap: 80px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .image-section {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+   .miniatures-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* valor fixo pequeno para deixar bem próximas */
+}
+
+
+    /* Miniaturas fixas com altura 95px, largura automática */
+    .miniatures-column img {
+      height: 95px;
+      width: auto;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+      object-fit: contain;
+      margin-bottom: 0; /* reset margin para ser controlado por JS */
+    }
+
+    .miniatures-column img:hover {
+      transform: scale(1.05);
+    }
+
+    .main-image {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+
+    .product-description-container {
+  background-color: #fff8f3;
+  border: 2px solid #DDC9AF;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 600px;
+
+  height: 400px;            /* <-- altura igual à imagem principal */
+  box-sizing: border-box;   /* garante que o padding esteja incluso na altura */
+}
+
+
+    .product-description-container h3 {
+      color: #8C7252;
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .product-description-container ul {
+      list-style: disc inside;
+      padding-left: 0;
+    }
+
+    .product-options {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      margin-top: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center; /* para centralizar verticalmente */
+    }
+
+    .option-box {
+      border: 2px solid #DDC9AF;
+      border-radius: 10px;
+      padding: 15px 20px;
+      background-color: #fff8f3;
+      font-size: 0.95rem;
+      width: 300px;
+      box-sizing: border-box;
+    }
+
+    /* Estilo para a palavra "ou" entre as opções */
+    .or-text {
+      font-weight: bold;
+      font-size: 2.2rem;
+      color: #080808;
+      user-select: none;
+      margin: 0 10px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .product-main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .miniatures-column {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .miniatures-column img {
+        margin-bottom: 0 !important;
+        margin-right: 10px;
+      }
+
+      .product-options {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .option-box {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .or-text {
+        margin: 15px 0;
+      }
+    }
+
+    .option-box h3 {
+      margin-top: 0;
+      color: #8C7252;
+      font-size: 1.3rem;
+    }
+
+    .option-box p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #b02e1e;
+      margin-top: 10px;
+    }
+
+    .btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #25D366;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 16px;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1da851;
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(29, 168, 81, 0.5);
+}
+
+.btn-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+
+    /* Modal Styles */
+    #imageModal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #imageModal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    #imageModal span.close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #imageModal .nav-buttons {
+      margin-top: 20px;
+    }
+
+    #imageModal button {
+      background: #E07320;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+
+    #imageModal button:hover {
+      background-color: #c65f17;
+    }
+    @media (min-width: 901px) {
+      .product-main {
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div style="display: flex; align-items: center; justify-content: center; gap: 40px;">
+    <h1 style="margin: 0; font-size: 4.5rem;">
+      Retr<span style="font-family: 'Playfair Display', serif;">ô</span>
+    </h1>
+    <img src="img/logo.PNG" alt="Logo RG Geladeira Retrô" style="max-width: 120px;" />
+    <h1 style="margin: 0; font-size: 4.5rem;">Geladeiras</h1>
+  </div>
+  <p style="font-size: 1.5rem; margin-top: 10px; font-family: 'Pacifico', cursive;">
+    O toque de exclusividade que sua casa precisa!
+  </p>
+</header>
+
+<section class="container">
+  <h2 class="product-title">
+    Geladeira <span style="color: #74C5E2;">Quadrada</span>
+  </h2>
+
+  <div class="product-main">
+    <!-- Imagens -->
+    <div class="image-section">
+      <div class="miniatures-column">
+        <img src="fotos/quadrada-removebg-preview.png" alt="Miniatura 1" />
+        <img src="fotos/quadrada2-removebg-preview.png" alt="Miniatura 2" />
+        
+        
+      </div>
+      <img id="mainImage" src="fotos/quadrada-removebg-preview.png" alt="Geladeira Ice Cold" class="main-image" />
+    </div>
+
+    <!-- Descrição -->
+    <div class="product-description-container">
+      <h3>Descrição Geral</h3>
+      <p>Geladeira original da década de 1960, com design clássico e linhas arredondadas. Totalmente reformada, mantém o charme retrô com funcionalidade moderna.</p>
+      <p>Ideal como item decorativo e funcional em cozinhas, áreas gourmet ou comércios com estética vintage.</p>
+
+      <h3>Especificações Técnicas</h3>
+      <ul>
+        <li>Voltagem: 110V ou 220V</li>
+        <li>Capacidade: aprox. 150 litros</li>
+        <li>Dimensões: 140cm (A) x 60cm (L) x 55cm (P)</li>
+        <li>Peso: aprox. 45 kg</li>
+        <li>Marca original: Ice Cold Refrigerators</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Opções de Compra -->
+  <div class="product-options">
+    <div class="option-box">
+      <h3>Comprar Como Está</h3>
+      <p>Você pode adquirir essa geladeira do jeito que ela está, com seu estilo autêntico e original. Pronta para decorar com personalidade qualquer ambiente.</p>
+      <div class="price">R$ 4.800,00</div>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO?text=Olá!%20Tenho%20interesse%20na%20geladeira%20retrô%20como%20está." target="_blank">
+  🛍️ Comprar agora mesmo
+</a>
+    </div>
+
+    <div class="or-text">ou</div>
+
+    <div class="option-box">
+      <h3>Quero Personalizar</h3>
+      <p>Transforme essa geladeira em uma peça exclusiva com as cores, marcas ou detalhes que combinam com você. Fale conosco e peça uma personalização única!</p>
+      <div class="price">Solicite um orçamento</div>
+      <a class="btn-whatsapp" href="https://wa.me/SEUNUMERO?text=Olá!%20Gostaria%20de%20personalizar%20essa%20geladeira%20retrô." target="_blank">
+  🎨 Criar minha versão
+</a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="imageModal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+  <img id="modalImage" src="" alt="Imagem ampliada" />
+  <div class="nav-buttons">
+    <button onclick="prevImage()">Anterior</button>
+    <button onclick="nextImage()">Próxima</button>
+  </div>
+</div>
+
+<script>
+  const images = Array.from(document.querySelectorAll('.miniatures-column img'));
+  const mainImage = document.getElementById('mainImage');
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  let currentIndex = 0;
+
+  // Atualiza a imagem principal ao clicar nas miniaturas
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      mainImage.src = img.src;
+      currentIndex = index;
+      openModal(currentIndex);
+    });
+  });
+
+  // Também abre modal ao clicar na imagem principal
+  mainImage.addEventListener('click', () => {
+    openModal(currentIndex);
+  });
+
+  function openModal(index) {
+    currentIndex = index;
+    modal.style.display = 'flex';
+    modalImg.src = images[currentIndex].src;
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImg.src = images[currentIndex].src;
+    mainImage.src = images[currentIndex].src;
+    ajustarGapMiniaturas();
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentIndex].src;
+    mainImage.src = images[currentIndex].src;
+    ajustarGapMiniaturas();
+  }
+
+  // Fechar modal ao clicar fora da imagem ampliada
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  
+</script>
+
+</body>
+</html>
