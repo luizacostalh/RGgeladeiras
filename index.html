@@ -21,20 +21,6 @@
             color: #2e2d2d;
         }
 
-        /* Removido o estilo 'header' antigo aqui, ele será redefinido abaixo */
-        /* header {
-            background-color: #E07320;
-            color: rgb(48, 44, 44);
-            padding: 10px 14px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-family: 'RetroBeach', serif;
-            font-size: 2.5em;
-            margin: 0;
-        } */
-
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -115,12 +101,12 @@
 
         .gallery-thumb {
             width: 100%;
-            height: 240px; /* pode ajustar para mais/menos se quiser */
-            object-fit: contain; /* <- agora mostra a imagem inteira */
+            height: 240px;
+            object-fit: contain;
             border-radius: 6px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            background-color: #fff; /* opcional para evitar fundo transparente */
+            background-color: #fff;
         }
 
         .gallery-thumb:hover {
@@ -135,14 +121,11 @@
             color: #444;
         }
 
-        /* Ajuste para telas médias, antes de mobile total */
         @media (max-width: 1200px) {
             .gallery-grid {
-                grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas de tablets maiores */
+                grid-template-columns: repeat(4, 1fr);
             }
         }
-
-        /* Mantido, mas otimizado para não conflitar com o novo cabeçalho */
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -156,38 +139,22 @@
             color: #777;
         }
 
-        /* ONDAS REMOVIDAS */
-        /* .wave-divider {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            margin-top: -1px;
-        }
-
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 100px;
-        } */
-
         /* NOVO CSS PARA O CABEÇALHO */
         .new-header {
             position: relative;
             width: 100%;
-            /* Altura ajustável: Usamos min-height para garantir que o conteúdo caiba */
-            min-height: 450px; /* Altura mínima para telas menores */
-            height: 70vh; /* Altura responsiva: 70% da altura da viewport */
-            max-height: 700px; /* Altura máxima para não ficar gigante em telas muito grandes */
+            min-height: 450px;
+            height: 70vh;
+            max-height: 700px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center; /* Centraliza o conteúdo horizontalmente */
+            align-items: center;
             padding: 20px 5%;
             box-sizing: border-box;
-            color: #fff; /* Cor do texto no cabeçalho */
-            text-align: center; /* Centraliza o texto do cabeçalho por padrão */
+            color: #fff;
+            /* REMOVIDO: text-align: center; para não centralizar no desktop */
         }
 
         .header-background {
@@ -196,14 +163,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('fotos/IMG_20250311_140129.jpg'); /* **ATENÇÃO: Mude para o caminho da sua imagem de fundo** */
+            background-image: url('fotos/IMG_20250311_140129.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             z-index: 0;
         }
 
-        /* Overlay para escurecer a imagem e melhorar a leitura do texto */
         .header-background::after {
             content: '';
             position: absolute;
@@ -211,15 +177,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.733); /* Escurece a imagem (ajuste a opacidade 0.4) */
+            background-color: rgba(0, 0, 0, 0.733);
             z-index: 1;
         }
 
         .header-content-wrapper {
             position: relative;
-            z-index: 2; /* Garante que o conteúdo fique acima da imagem e do overlay */
+            z-index: 2;
             width: 100%;
-            max-width: 1200px; /* Limita a largura do conteúdo para não esticar muito */
+            max-width: 1200px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -231,13 +197,13 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            padding: 10px 0; /* Ajuste o padding interno da barra superior */
+            padding: 10px 0;
         }
 
         .header-logo img {
-            max-width: 180px; /* Mantém o tamanho do seu logo */
+            max-width: 180px;
             height: auto;
-            display: block; /* Remove espaço extra abaixo da imagem */
+            display: block;
         }
 
         .main-nav ul {
@@ -245,52 +211,54 @@
             padding: 0;
             margin: 0;
             display: flex;
-            gap: 25px; /* Espaçamento entre os itens do menu */
+            gap: 25px;
             align-items: center;
         }
 
         .main-nav ul li a {
             text-decoration: none;
-            color: #fff; /* Cor dos links */
+            color: #fff;
             font-weight: bold;
             font-size: 1.1em;
             padding: 5px 10px;
             transition: color 0.3s ease;
-            white-space: nowrap; /* Evita quebras de linha em links */
+            white-space: nowrap;
         }
 
         .main-nav ul li a:hover {
-            color: #f0a300; /* Cor de destaque ao passar o mouse */
+            color: #f0a300;
         }
 
         .btn-contato {
-            background-color: #E07320; /* Cor do seu botão "Compre Agora!" */
-            color: white !important; /* !important para garantir que a cor branca prevaleça */
+            background-color: #E07320;
+            color: white !important;
             padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .btn-contato:hover {
-            background-color: #c9621b; /* Tom mais escuro ao passar o mouse */
+            background-color: #c9621b;
         }
 
         .hero-section {
-            color: #fff; /* Garante que o texto hero seja branco */
-            text-align: left;
-            margin-top: auto; /* Empurra para baixo, acima do padding inferior */
-            padding-bottom: 50px; /* Espaçamento da parte de baixo do cabeçalho */
-            max-width: 90%; /* Limita a largura do texto para evitar corte */
-            margin-left: 0; /* Alinha à esquerda no desktop */
+            color: #fff;
+            text-align: left; /* Alinhado à esquerda no desktop */
+            margin-top: auto;
+            padding-bottom: 50px;
+            /* Ajuste o max-width para dar mais espaço, ou use % */
+            max-width: 700px; /* Aumentado de 600px para 700px para o texto ocupar mais espaço */
+            margin-left: 0; /* Garante que o texto esteja alinhado à esquerda */
+            width: 100%; /* Garante que ocupe a largura disponível até o max-width */
         }
 
         .hero-section h1 {
-            font-family: 'Pacifico', cursive; /* Use a fonte Pacifico para o título */
+            font-family: 'Pacifico', cursive;
             font-size: 4em;
             margin: 0 0 10px 0;
             line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para melhorar a legibilidade */
-            word-wrap: break-word; /* Garante que palavras longas quebrem */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            word-wrap: break-word;
         }
 
         .hero-section p {
@@ -299,12 +267,12 @@
             max-width: 600px;
             margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            word-wrap: break-word; /* Garante que palavras longas quebrem */
+            word-wrap: break-word;
         }
 
         .btn-detalhes {
             display: inline-block;
-            background-color: #E07320; /* Cor do seu botão */
+            background-color: #E07320;
             color: white;
             padding: 15px 30px;
             border-radius: 5px;
@@ -317,86 +285,85 @@
             background-color: #c9621b;
         }
 
-        /* Botão de menu só aparece em telas menores */
         .menu-toggle {
-            display: none; /* Escondido por padrão */
+            display: none;
             background: none;
             border: none;
             font-size: 2rem;
             color: white;
             cursor: pointer;
-            z-index: 3; /* Garante que fique acima de outros elementos */
+            z-index: 3;
         }
 
         /* MOBILE RESPONSIVENESS */
         @media (max-width: 768px) {
             .new-header {
-                height: auto; /* Altura automática para se ajustar ao conteúdo */
-                min-height: 400px; /* Altura mínima para não ficar muito pequeno */
-                padding: 15px 3%; /* Ajuste o padding para telas menores */
-                text-align: center; /* Centraliza o texto do cabeçalho no mobile */
-                justify-content: flex-start; /* Alinha o conteúdo ao topo */
+                height: auto;
+                min-height: 400px;
+                padding: 15px 3%;
+                text-align: center; /* Centraliza o texto no mobile */
+                justify-content: flex-start;
             }
 
             .header-logo img {
-                max-width: 120px; /* Reduz o logo para mobile */
+                max-width: 120px;
             }
 
             .top-bar {
-                flex-direction: row; /* Mantém logo e botão de menu na mesma linha */
-                justify-content: space-between; /* Espaço entre eles */
-                width: 100%; /* Ocupa a largura total */
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
                 align-items: center;
             }
 
             .menu-toggle {
-                display: block; /* Mostra o botão de menu */
+                display: block;
             }
 
             .main-nav {
-                display: none; /* Oculta a navegação por padrão no mobile */
+                display: none;
                 width: 100%;
-                order: 3; /* Coloca a navegação abaixo do logo e botão */
-                margin-top: 20px; /* Espaço entre a barra superior e o menu */
-                background-color: rgba(0, 0, 0, 0.8); /* Fundo para o menu aberto */
+                order: 3;
+                margin-top: 20px;
+                background-color: rgba(0, 0, 0, 0.8);
                 padding: 10px 0;
                 border-radius: 5px;
             }
 
             .main-nav.active {
-                display: block; /* Mostra a navegação quando a classe 'active' é adicionada */
+                display: block;
             }
 
             .main-nav ul {
-                flex-direction: column; /* Coloca os itens do menu em coluna */
+                flex-direction: column;
                 gap: 12px;
-                text-align: center; /* Centraliza os itens do menu */
+                text-align: center;
             }
 
             .main-nav ul li a {
                 padding: 8px 0;
                 display: block;
-                font-size: 1em; /* Ajusta o tamanho da fonte */
-                white-space: normal; /* Permite quebras de linha */
+                font-size: 1em;
+                white-space: normal;
             }
 
             .hero-section {
-                padding-top: 30px; /* Ajusta o padding do hero section */
+                padding-top: 30px;
                 padding-bottom: 30px;
-                text-align: center; /* Centraliza o texto do hero section */
-                margin-left: auto; /* Centraliza o hero-section */
+                text-align: center; /* Centraliza o texto do hero section no mobile */
+                margin-left: auto;
                 margin-right: auto;
                 max-width: 100%; /* Permite que o texto ocupe mais largura */
             }
 
             .hero-section h1 {
-                font-size: 2.2em; /* Reduz o tamanho da fonte do título */
+                font-size: 2.2em;
                 line-height: 1.3;
             }
 
             .hero-section p {
-                font-size: 0.95em; /* Reduz o tamanho da fonte do parágrafo */
-                max-width: 90%; /* Ajusta a largura máxima do parágrafo */
+                font-size: 0.95em;
+                max-width: 90%;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -407,19 +374,33 @@
             }
         }
 
-        /* Para telas muito pequenas (ex: 320px de largura) */
+        /* Nova Media Query para telas de notebooks menores (ex: entre 992px e 1440px) */
+        @media (min-width: 769px) and (max-width: 1440px) {
+            .hero-section h1 {
+                font-size: 3.2em; /* Reduz ligeiramente o tamanho da fonte para notebooks */
+            }
+            .hero-section p {
+                font-size: 1.1em; /* Ajusta o parágrafo */
+            }
+            .new-header {
+                height: 60vh; /* Pode ser um pouco menor para economizar espaço vertical */
+                min-height: 550px; /* Garante altura mínima para notebooks */
+            }
+        }
+
+
         @media (max-width: 480px) {
             .new-header {
                 min-height: 350px;
             }
             .header-logo img {
-                max-width: 100px; /* Logo ainda menor */
+                max-width: 100px;
             }
             .hero-section h1 {
-                font-size: 1.8em; /* Fonte ainda menor para o título */
+                font-size: 1.8em;
             }
             .hero-section p {
-                font-size: 0.85em; /* Fonte ainda menor para o parágrafo */
+                font-size: 0.85em;
             }
         }
     </style>
