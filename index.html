@@ -143,14 +143,14 @@
         .new-header {
             position: relative;
             width: 100%;
-            min-height: 550px;
-            height: 70vh;
-            max-height: 700px;
+            min-height: 550px; /* Mantém a altura mínima no desktop */
+            height: 70vh; /* Altura flexível para desktop, até um máximo */
+            max-height: 700px; /* Limita a altura máxima no desktop */
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: space-between; /* Distribui o top-bar e hero-section */
+            align-items: center; /* Centraliza o header-content-wrapper */
             padding: 20px 5%;
             box-sizing: border-box;
             color: #fff;
@@ -185,11 +185,11 @@
             z-index: 2;
             width: 100%;
             max-width: 1200px;
+            height: 100%; /* Ocupa toda a altura do header */
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Distribui logo/menu e hero-section */
-            height: 100%;
-            align-items: flex-start; /* Alinha o conteúdo (incluindo o hero-section) à esquerda no desktop */
+            justify-content: space-between; /* Mantém top-bar no topo e hero-section embaixo */
+            align-items: flex-start; /* Alinha o conteúdo à esquerda no desktop */
         }
 
         .top-bar {
@@ -299,36 +299,36 @@
         @media (max-width: 768px) {
             .new-header {
                 height: auto; /* Deixa a altura se ajustar ao conteúdo */
-                min-height: 500px; /* Garante que a imagem tenha um bom espaço no mobile */
-                padding: 15px 5%; /* Aumenta o padding lateral para não ficar tão "colado" */
-                justify-content: flex-start; /* Começa o conteúdo do cabeçalho do topo */
+                min-height: 450px; /* Reduzi um pouco para ser mais flexível, mantendo espaço */
+                padding: 15px 5%;
+                justify-content: flex-start; /* Conteúdo do cabeçalho alinha ao topo */
             }
 
             .header-content-wrapper {
-                flex-direction: column; /* Empilha os itens verticalmente */
-                justify-content: flex-start; /* Alinha do topo para baixo */
+                flex-direction: column;
+                justify-content: flex-start; /* Conteúdo empilhado do topo para baixo */
                 align-items: center; /* Centraliza todo o conteúdo do wrapper horizontalmente */
-                height: auto; /* Importante para que o conteúdo não seja cortado verticalmente */
+                height: auto; /* Permite que a altura se ajuste */
             }
 
             .top-bar {
-                flex-direction: row; /* Mantém o logo e o botão de menu lado a lado */
+                flex-direction: row;
                 justify-content: space-between;
                 width: 100%;
-                margin-bottom: 20px; /* Adiciona um espaço entre o top-bar e o hero-section */
-                flex-wrap: wrap; /* Permite que os itens quebrem se a tela for muito pequena */
+                margin-bottom: 20px;
+                flex-wrap: wrap; /* Importante para o logo e toggle não se sobreporem */
             }
 
             .header-logo img {
                 max-width: 120px;
-                /* Adicionei para garantir que o logo não fique muito grande em telas menores */
                 width: 100%; /* Garante que a imagem se ajuste à largura do contêiner */
                 height: auto;
+                margin: 0 auto; /* Centraliza a logo se ela ficar sozinha na linha */
             }
 
             .menu-toggle {
                 display: block;
-                font-size: 2.5rem; /* Aumenta um pouco o tamanho do ícone */
+                font-size: 2.5rem;
             }
 
             .main-nav {
@@ -336,9 +336,9 @@
                 width: 100%;
                 order: 3; /* Coloca o menu abaixo do hero-section quando expandido */
                 margin-top: 20px;
-                background-color: rgba(0, 0, 0, 0.85); /* Fundo mais escuro para o menu */
-                padding: 15px 0; /* Aumenta o padding vertical */
-                border-radius: 8px; /* Cantos um pouco mais arredondados */
+                background-color: rgba(0, 0, 0, 0.85);
+                padding: 15px 0;
+                border-radius: 8px;
             }
 
             .main-nav.active {
@@ -347,7 +347,7 @@
 
             .main-nav ul {
                 flex-direction: column;
-                gap: 15px; /* Aumenta o espaçamento entre os itens */
+                gap: 15px;
                 text-align: center;
             }
 
@@ -359,19 +359,19 @@
             }
 
             .hero-section {
-                padding-top: 30px;
-                padding-bottom: 30px;
+                padding-top: 20px; /* Reduzi um pouco o padding para otimizar espaço */
+                padding-bottom: 20px;
                 text-align: center; /* Centraliza o texto do hero section no mobile */
                 margin-left: auto;
                 margin-right: auto;
-                max-width: 95%; /* Permite que ocupe quase toda a largura */
-                margin-top: 20px; /* Adiciona um pequeno espaço após o top-bar/menu */
-                /* Adicionado para garantir que o hero-section se ajuste bem verticalmente */
-                flex-grow: 1; /* Permite que o hero-section ocupe o espaço disponível */
+                max-width: 95%;
+                margin-top: 20px;
+                /* Adicionado para centralizar o conteúdo flexível verticalmente */
                 display: flex;
                 flex-direction: column;
-                justify-content: center; /* Centraliza o conteúdo do hero-section verticalmente */
-                align-items: center; /* Centraliza o conteúdo do hero-section horizontalmente */
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1; /* Permite que ocupe o espaço restante */
             }
 
             .hero-section h1 {
@@ -408,13 +408,13 @@
 
         @media (max-width: 480px) {
             .new-header {
-                min-height: 400px; /* Ajusta ainda mais a altura mínima para telas muito pequenas */
+                min-height: 380px; /* Ajusta ainda mais a altura mínima para telas muito pequenas */
             }
             .header-logo img {
-                max-width: 100px; /* Logo menor para telas muito pequenas */
+                max-width: 90px; /* Logo menor para telas muito pequenas */
             }
             .hero-section h1 {
-                font-size: 1.6em; /* Título menor para telas muito pequenas */
+                font-size: 1.5em; /* Título menor para telas muito pequenas */
             }
             .hero-section p {
                 font-size: 0.8em; /* Parágrafo menor para telas muito pequenas */
