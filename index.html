@@ -104,7 +104,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* de 10 para 5 */
+            grid-template-columns: repeat(5, 1fr);
             gap: 16px;
             margin-top: 60px;
         }
@@ -135,12 +135,14 @@
             color: #444;
         }
 
+        /* Ajuste para telas médias, antes de mobile total */
         @media (max-width: 1200px) {
             .gallery-grid {
-                grid-template-columns: repeat(5, 1fr);
+                grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas de tablets maiores */
             }
         }
 
+        /* Mantido, mas otimizado para não conflitar com o novo cabeçalho */
         @media (max-width: 768px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -154,7 +156,8 @@
             color: #777;
         }
 
-        .wave-divider {
+        /* ONDAS REMOVIDAS */
+        /* .wave-divider {
             position: relative;
             width: 100%;
             overflow: hidden;
@@ -166,13 +169,16 @@
             display: block;
             width: 100%;
             height: 100px;
-        }
+        } */
 
         /* NOVO CSS PARA O CABEÇALHO */
         .new-header {
             position: relative;
             width: 100%;
-            height: 700px; /* Ajuste esta altura conforme a imagem de fundo */
+            /* Altura ajustável: Usamos min-height para garantir que o conteúdo caiba */
+            min-height: 450px; /* Altura mínima para telas menores */
+            height: 70vh; /* Altura responsiva: 70% da altura da viewport */
+            max-height: 700px; /* Altura máxima para não ficar gigante em telas muito grandes */
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -180,6 +186,8 @@
             align-items: center; /* Centraliza o conteúdo horizontalmente */
             padding: 20px 5%;
             box-sizing: border-box;
+            color: #fff; /* Cor do texto no cabeçalho */
+            text-align: center; /* Centraliza o texto do cabeçalho por padrão */
         }
 
         .header-background {
@@ -256,7 +264,7 @@
         }
 
         .btn-contato {
-            background-color: #E07320; /* Cor do seu botão "Padaria Online" */
+            background-color: #E07320; /* Cor do seu botão "Compre Agora!" */
             color: white !important; /* !important para garantir que a cor branca prevaleça */
             padding: 10px 20px;
             border-radius: 5px;
@@ -268,18 +276,21 @@
         }
 
         .hero-section {
-            color: #fff;
+            color: #fff; /* Garante que o texto hero seja branco */
             text-align: left;
             margin-top: auto; /* Empurra para baixo, acima do padding inferior */
             padding-bottom: 50px; /* Espaçamento da parte de baixo do cabeçalho */
+            max-width: 90%; /* Limita a largura do texto para evitar corte */
+            margin-left: 0; /* Alinha à esquerda no desktop */
         }
 
         .hero-section h1 {
-            font-family: 'Pacifico', cursive; /* Use a fonte Pacifico para o "amor de pão" */
+            font-family: 'Pacifico', cursive; /* Use a fonte Pacifico para o título */
             font-size: 4em;
             margin: 0 0 10px 0;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para melhorar a legibilidade */
+            word-wrap: break-word; /* Garante que palavras longas quebrem */
         }
 
         .hero-section p {
@@ -288,6 +299,7 @@
             max-width: 600px;
             margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            word-wrap: break-word; /* Garante que palavras longas quebrem */
         }
 
         .btn-detalhes {
@@ -305,88 +317,111 @@
             background-color: #c9621b;
         }
 
-        /* Responsividade para o novo cabeçalho */
-        @media (max-width: 768px) {
-            .new-header {
-                height: 500px; /* Ajusta a altura para telas menores */
-                padding: 15px 3%;
-            }
-            .top-bar {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-            .main-nav ul li {
-                margin: 0;
-            }
-            .hero-section h1 {
-                font-size: 3em;
-            }
-            .hero-section p {
-                font-size: 1em;
-            }
+        /* Botão de menu só aparece em telas menores */
+        .menu-toggle {
+            display: none; /* Escondido por padrão */
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 3; /* Garante que fique acima de outros elementos */
         }
 
-        @media (max-width: 480px) {
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
             .new-header {
-                height: 400px;
+                height: auto; /* Altura automática para se ajustar ao conteúdo */
+                min-height: 400px; /* Altura mínima para não ficar muito pequeno */
+                padding: 15px 3%; /* Ajuste o padding para telas menores */
+                text-align: center; /* Centraliza o texto do cabeçalho no mobile */
+                justify-content: flex-start; /* Alinha o conteúdo ao topo */
             }
+
+            .header-logo img {
+                max-width: 120px; /* Reduz o logo para mobile */
+            }
+
+            .top-bar {
+                flex-direction: row; /* Mantém logo e botão de menu na mesma linha */
+                justify-content: space-between; /* Espaço entre eles */
+                width: 100%; /* Ocupa a largura total */
+                align-items: center;
+            }
+
+            .menu-toggle {
+                display: block; /* Mostra o botão de menu */
+            }
+
+            .main-nav {
+                display: none; /* Oculta a navegação por padrão no mobile */
+                width: 100%;
+                order: 3; /* Coloca a navegação abaixo do logo e botão */
+                margin-top: 20px; /* Espaço entre a barra superior e o menu */
+                background-color: rgba(0, 0, 0, 0.8); /* Fundo para o menu aberto */
+                padding: 10px 0;
+                border-radius: 5px;
+            }
+
+            .main-nav.active {
+                display: block; /* Mostra a navegação quando a classe 'active' é adicionada */
+            }
+
+            .main-nav ul {
+                flex-direction: column; /* Coloca os itens do menu em coluna */
+                gap: 12px;
+                text-align: center; /* Centraliza os itens do menu */
+            }
+
+            .main-nav ul li a {
+                padding: 8px 0;
+                display: block;
+                font-size: 1em; /* Ajusta o tamanho da fonte */
+                white-space: normal; /* Permite quebras de linha */
+            }
+
+            .hero-section {
+                padding-top: 30px; /* Ajusta o padding do hero section */
+                padding-bottom: 30px;
+                text-align: center; /* Centraliza o texto do hero section */
+                margin-left: auto; /* Centraliza o hero-section */
+                margin-right: auto;
+                max-width: 100%; /* Permite que o texto ocupe mais largura */
+            }
+
             .hero-section h1 {
-                font-size: 2.5em;
+                font-size: 2.2em; /* Reduz o tamanho da fonte do título */
+                line-height: 1.3;
             }
+
             .hero-section p {
-                font-size: 0.9em;
+                font-size: 0.95em; /* Reduz o tamanho da fonte do parágrafo */
+                max-width: 90%; /* Ajusta a largura máxima do parágrafo */
+                margin-left: auto;
+                margin-right: auto;
             }
+
             .btn-detalhes {
                 padding: 12px 25px;
                 font-size: 0.9em;
             }
         }
-          /* Botão de menu só aparece em telas menores */
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        color: white;
-        cursor: pointer;
-    }
 
-    @media (max-width: 768px) {
-        .menu-toggle {
-            display: block;
+        /* Para telas muito pequenas (ex: 320px de largura) */
+        @media (max-width: 480px) {
+            .new-header {
+                min-height: 350px;
+            }
+            .header-logo img {
+                max-width: 100px; /* Logo ainda menor */
+            }
+            .hero-section h1 {
+                font-size: 1.8em; /* Fonte ainda menor para o título */
+            }
+            .hero-section p {
+                font-size: 0.85em; /* Fonte ainda menor para o parágrafo */
+            }
         }
-
-        .main-nav {
-            display: none;
-            width: 100%;
-        }
-
-        .main-nav.active {
-            display: block;
-            margin-top: 10px;
-        }
-
-        .main-nav ul {
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .main-nav ul li a {
-            padding: 8px 0;
-            display: block;
-        }
-
-        .top-bar {
-            align-items: flex-start;
-        }
-    }
-
     </style>
 </head>
 <body>
@@ -398,8 +433,7 @@
                 <img src="img/logo.PNG" alt="Logo RG Geladeira Retrô">
             </div>
 
-            <!-- Botão de menu para mobile -->
-            <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('active')">
+            <button class="menu-toggle" aria-label="Abrir menu" onclick="document.querySelector('.main-nav').classList.toggle('active')">
                 ☰
             </button>
 
@@ -422,15 +456,11 @@
     </div>
 </header>
 
-
     
-    </div>
-    <!-- Produto 1 -->
-    <section class="container">
+    <section class="container" id="gallery">
         <h2 style="text-align:center; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #3a2d1c; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
             Galeria de <span style="color: #E07320;">Geladeiras</span>
         </h2>
-        <!-- Dentro da primeira galeria -->
         <div class="gallery-grid">
             <div class="gallery-item">
                 <a href="Geladeira_Azul.html"><img src="fotos/azul2.png" alt="Geladeira 1" class="gallery-thumb"></a>
@@ -474,14 +504,12 @@
             </div>
         </div>
 
-        <!-- Divisor -->
         <div style="width: 100%; text-align: center; margin: 50px 0;">
             <hr style="border: none; border-top: 2px dashed #E07320; width: 80%;">
             <span style="display: inline-block; background-color: #ffffff; padding: 0 12px; font-family: 'Pacifico', cursive; font-size: 1.8rem; color: #E07320; position: relative; top: -35px;">
                 ✦ Detalhes que contam histórias ✦
             </span>
         </div>
-        <!-- Segunda linha -->
         <div class="gallery-grid">
             <div class="gallery-item">
                 <a href="ferrugem.html"><img src="fotos/ferrugem-removebg-preview.png" alt="Geladeira 11" class="gallery-thumb"></a>
@@ -525,7 +553,6 @@
             </div>
         </div>
 
-        <!-- Divisor -->
         <div style="width: 100%; text-align: center; margin: 50px 0;">
             <hr style="border: none; border-top: 2px dashed #E07320; width: 80%;">
             <span style="display: inline-block; background-color: #ffffff; padding: 0 12px; font-family: 'Pacifico', cursive; font-size: 1.8rem; color: #E07320; position: relative; top: -35px;">
@@ -533,7 +560,6 @@
             </span>
         </div>
 
-        <!-- terceira linha -->
         <div class="gallery-grid">
             <div class="gallery-item">
                 <a href="climasxverde.html"><img src="fotos/climaxverde.png" alt="Geladeira 11" class="gallery-thumb"></a>
@@ -558,9 +584,19 @@
         </div>
     </section>
 
-
     <footer>
         © 2025 RG Geladeira Retrô. Todos os direitos reservados.
     </footer>
+
+    <script>
+        // Smooth scroll for "Ver Modelos" button
+        document.querySelector('.btn-detalhes').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
