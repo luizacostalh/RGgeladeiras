@@ -74,8 +74,6 @@
             color: #333;
         }
 
-        /* Removido: .btn-whatsapp e .btn-whatsapp:hover */
-
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -218,8 +216,6 @@
             color: #f0a300;
         }
 
-        /* Removido: .btn-contato e .btn-contato:hover */
-
         .hero-section {
             color: #fff;
             text-align: left; /* Alinhado à esquerda no desktop */
@@ -248,19 +244,24 @@
             word-wrap: break-word;
         }
 
+        /* Estilo do botão "Ver Modelos" original */
         .btn-detalhes {
             display: inline-block;
-            background-color: #E07320;
-            color: white;
+            background-color: transparent;
+            color: rgb(193, 163, 98);
             padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgb(193, 163, 98);
+            cursor: pointer;
         }
 
         .btn-detalhes:hover {
-            background-color: #c9621b;
+            background-color: rgb(193, 163, 98);
+            color: #212121;
+            box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
         }
 
         .menu-toggle {
@@ -404,77 +405,52 @@
         }
         /* FIM DAS ALTERAÇÕES NO CSS DO CABEÇALHO */
 
-        .button {
-            cursor: pointer;
+        /* Novo CSS para o botão com efeito de hover que não esconde o texto */
+        .button-uiverse {
             position: relative;
-            padding: 10px 24px;
-            font-size: 18px;
-            color: rgb(193, 163, 98);
-            border: 2px solid rgb(193, 163, 98);
-            border-radius: 34px;
-            background-color: transparent;
+            background-color: #333; /* Cor de fundo inicial */
+            color: #e8e8e8;
+            font-size: 17px;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            overflow: hidden;
-            display: inline-block;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 50px;
-            height: 50px;
-            border-radius: inherit;
-            scale: 0;
-            z-index: -1;
-            background-color: rgb(193, 163, 98);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-        }
-
-        .button:hover::before {
-            scale: 3;
-        }
-
-        .button:hover {
-            color: #212121;
-            scale: 1.1;
-            box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
-        }
-
-        .button:active {
-            scale: 1;
-        }
-
-        /* CSS para o novo botão que você enviou */
-        #bottone1 {
-            padding-left: 33px;
-            padding-right: 33px;
-            padding-bottom: 16px;
-            padding-top: 16px;
-            border-radius: 9px;
-            background: #d5f365;
+            border-radius: 10px;
+            width: 150px;
+            height: 60px;
             border: none;
-            font-family: inherit;
-            text-align: center;
+            text-transform: uppercase;
             cursor: pointer;
-            transition: 0.4s;
-            /* Adicionei display: inline-block e text-decoration: none para que funcione como um link */
-            display: inline-block;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(51, 51, 51, 0.2);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            color: inherit; /* Para herdar a cor do texto padrão ou você pode definir uma */
+            z-index: 1; /* Garante que o texto do link esteja acima */
         }
 
-        #bottone1:hover {
-            box-shadow: 7px 5px 56px -14px #C3D900;
+        .button-uiverse::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg,#7b4397,#dc2430 );
+            transform: translateY(100%); /* Começa embaixo */
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            z-index: -1; /* Fica atrás do texto */
         }
 
-        #bottone1:active {
-            transform: scale(0.97);
-            box-shadow: 7px 5px 56px -10px #C3D900;
+        .button-uiverse:hover::before {
+            transform: translateY(0%); /* Sobe para cobrir o fundo */
+        }
+
+        .button-uiverse:focus {
+            outline: none;
+        }
+
+        .button-uiverse:active {
+            scale: 0.95;
         }
     </style>
 </head>
@@ -493,19 +469,15 @@
       </button>
 
       <nav class="main-nav">
-  <ul>
-    <li>
-      <a href="https://wa.me/+5567996565791" target="_blank" id="bottone1">
-        WhatsApp
-      </a>
-    </li>
-    <li>
-      <a href="https://www.instagram.com/geladeira_retro" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-    </li>
-  </ul>
-</nav>
+        <ul>
+          <li>
+            <a href="https://wa.me/+5567996565791" target="_blank" class="button-uiverse">WhatsApp</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/geladeira_retro" target="_blank" class="button-uiverse">Instagram</a>
+          </li>
+        </ul>
+      </nav>
 
     </div>
 
@@ -514,7 +486,7 @@
       <p>
         Descubra nossa galeria de geladeiras retrô customizadas, cada peça única com sua própria história e estilo. Transforme seu ambiente com um design vintage e funcionalidade moderna.
       </p>
-      <a href="#gallery" class="button">Ver Modelos</a>
+      <a href="#gallery" class="btn-detalhes">Ver Modelos</a>
     </div>
   </div>
 </header>
@@ -654,7 +626,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll for "Ver Modelos" button
-            const verModelosBtn = document.querySelector('.button[href="#gallery"]');
+            const verModelosBtn = document.querySelector('.btn-detalhes');
             if (verModelosBtn) {
                 verModelosBtn.addEventListener('click', function(e) {
                     e.preventDefault();
