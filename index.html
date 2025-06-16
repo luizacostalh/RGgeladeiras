@@ -74,19 +74,7 @@
             color: #333;
         }
 
-        .btn-whatsapp {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 14px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #1da851;
-        }
+        /* Removido: .btn-whatsapp e .btn-whatsapp:hover */
 
         .gallery-grid {
             display: grid;
@@ -230,17 +218,7 @@
             color: #f0a300;
         }
 
-        .btn-contato {
-            background-color: #E07320;
-            color: white !important;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-contato:hover {
-            background-color: #c9621b;
-        }
+        /* Removido: .btn-contato e .btn-contato:hover */
 
         .hero-section {
             color: #fff;
@@ -470,39 +448,77 @@
         .button:active {
             scale: 1;
         }
+
+        /* CSS para o novo botão que você enviou */
+        #bottone1 {
+            padding-left: 33px;
+            padding-right: 33px;
+            padding-bottom: 16px;
+            padding-top: 16px;
+            border-radius: 9px;
+            background: #d5f365;
+            border: none;
+            font-family: inherit;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.4s;
+            /* Adicionei display: inline-block e text-decoration: none para que funcione como um link */
+            display: inline-block;
+            text-decoration: none;
+            color: inherit; /* Para herdar a cor do texto padrão ou você pode definir uma */
+        }
+
+        #bottone1:hover {
+            box-shadow: 7px 5px 56px -14px #C3D900;
+        }
+
+        #bottone1:active {
+            transform: scale(0.97);
+            box-shadow: 7px 5px 56px -10px #C3D900;
+        }
     </style>
 </head>
+
 <body>
     <header class="new-header">
-        <div class="header-background"></div>
-        <div class="header-content-wrapper">
-            <div class="top-bar">
-                <div class="header-logo">
-                    <img src="img/logo.PNG" alt="Logo RG Geladeira Retrô">
-                </div>
+  <div class="header-background"></div>
+  <div class="header-content-wrapper">
+    <div class="top-bar">
+      <div class="header-logo">
+        <img src="img/logo.PNG" alt="Logo RG Geladeira Retrô">
+      </div>
 
-                <button class="menu-toggle" aria-label="Abrir menu">
-                    ☰
-                </button>
+      <button class="menu-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
 
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">SOBRE</a></li>
-                        <li><a href="#">PRODUTOS</a></li>
-                        <li><a href="#">CONTATO</a></li>
-                        <li><a href="https://wa.me/+5567996565791" target="_blank" class="btn-contato">Compre Agora!</a></li>
-                    </ul>
-                </nav>
-            </div>
+      <nav class="main-nav">
+  <ul>
+    <li>
+      <a href="https://wa.me/+5567996565791" target="_blank" id="bottone1">
+        WhatsApp
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/geladeira_retro" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </li>
+  </ul>
+</nav>
 
-            <div class="hero-section">
-                <h1>O toque de exclusividade que sua casa precisa!</h1>
-                <p>Descubra nossa galeria de geladeiras retrô customizadas, cada peça única com sua própria história e estilo. Transforme seu ambiente com um design vintage e funcionalidade moderna.</p>
-                <a href="#gallery" class="button">Ver Modelos</a>
-            </div>
-        </div>
-    </header>
+    </div>
+
+    <div class="hero-section">
+      <h1>O toque de exclusividade que sua casa precisa!</h1>
+      <p>
+        Descubra nossa galeria de geladeiras retrô customizadas, cada peça única com sua própria história e estilo. Transforme seu ambiente com um design vintage e funcionalidade moderna.
+      </p>
+      <a href="#gallery" class="button">Ver Modelos</a>
+    </div>
+  </div>
+</header>
+
 
     <section class="container" id="gallery">
         <h2 style="text-align:center; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #3a2d1c; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
