@@ -74,6 +74,20 @@
             color: #333;
         }
 
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -216,6 +230,18 @@
             color: #f0a300;
         }
 
+        .btn-contato {
+            background-color: #e0732000;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-contato:hover {
+            background-color: #ff6600;
+        }
+
         .hero-section {
             color: #fff;
             text-align: left; /* Alinhado à esquerda no desktop */
@@ -244,24 +270,19 @@
             word-wrap: break-word;
         }
 
-        /* Estilo do botão "Ver Modelos" original */
         .btn-detalhes {
             display: inline-block;
-            background-color: transparent;
-            color: rgb(193, 163, 98);
+            background-color: #E07320;
+            color: white;
             padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid rgb(193, 163, 98);
-            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .btn-detalhes:hover {
-            background-color: rgb(193, 163, 98);
-            color: #212121;
-            box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
+            background-color: #c9621b;
         }
 
         .menu-toggle {
@@ -405,52 +426,49 @@
         }
         /* FIM DAS ALTERAÇÕES NO CSS DO CABEÇALHO */
 
-        /* Novo CSS para o botão com efeito de hover que não esconde o texto */
-        .button-uiverse {
-            position: relative;
-            background-color: #333; /* Cor de fundo inicial */
-            color: #e8e8e8;
-            font-size: 17px;
-            font-weight: 600;
-            border-radius: 10px;
-            width: 100px;
-            height: 40px;
-            border: none;
-            text-transform: uppercase;
+        .button {
             cursor: pointer;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(51, 51, 51, 0.2);
+            position: relative;
+            padding: 10px 24px;
+            font-size: 18px;
+            color: rgb(193, 163, 98);
+            border: 2px solid rgb(193, 163, 98);
+            border-radius: 34px;
+            background-color: transparent;
+            font-weight: 600;
             transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            display: inline-block;
             text-decoration: none;
-            z-index: 1; /* Garante que o texto do link esteja acima */
+            text-align: center;
         }
 
-        .button-uiverse::before {
-            content: "";
+        .button::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg,#7b4397,#dc2430 );
-            transform: translateY(100%); /* Começa embaixo */
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-            z-index: -1; /* Fica atrás do texto */
+            inset: 0;
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            border-radius: inherit;
+            scale: 0;
+            z-index: -1;
+            background-color: rgb(193, 163, 98);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
         }
 
-        .button-uiverse:hover::before {
-            transform: translateY(0%); /* Sobe para cobrir o fundo */
+        .button:hover::before {
+            scale: 3;
         }
 
-        .button-uiverse:focus {
-            outline: none;
+        .button:hover {
+            color: #212121;
+            scale: 1.1;
+            box-shadow: 0 0px 20px rgba(193, 163, 98, 0.4);
         }
 
-        .button-uiverse:active {
-            scale: 0.95;
+        .button:active {
+            scale: 1;
         }
     </style>
 </head>
@@ -469,15 +487,19 @@
       </button>
 
       <nav class="main-nav">
-        <ul>
-          <li>
-            <a href="https://wa.me/+5567996565791" target="_blank" class="button-uiverse">WhatsApp</a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/geladeira_retro" target="_blank" class="button-uiverse">Instagram</a>
-          </li>
-        </ul>
-      </nav>
+  <ul>
+    <li>
+      <a href="https://wa.me/+5567996565791" target="_blank" class="btn-contato">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/geladeira_retro" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </li>
+  </ul>
+</nav>
 
     </div>
 
@@ -486,7 +508,7 @@
       <p>
         Descubra nossa galeria de geladeiras retrô customizadas, cada peça única com sua própria história e estilo. Transforme seu ambiente com um design vintage e funcionalidade moderna.
       </p>
-      <a href="#gallery" class="btn-detalhes">Ver Modelos</a>
+      <a href="#gallery" class="button">Ver Modelos</a>
     </div>
   </div>
 </header>
@@ -626,7 +648,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Smooth scroll for "Ver Modelos" button
-            const verModelosBtn = document.querySelector('.btn-detalhes');
+            const verModelosBtn = document.querySelector('.button[href="#gallery"]');
             if (verModelosBtn) {
                 verModelosBtn.addEventListener('click', function(e) {
                     e.preventDefault();
